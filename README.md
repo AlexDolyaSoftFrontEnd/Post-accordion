@@ -1,4 +1,4 @@
-# PostsAccordion Component
+# Posts-accordion
 
 ## Основные возможности
 
