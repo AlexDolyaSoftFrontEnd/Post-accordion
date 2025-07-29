@@ -1,69 +1,101 @@
-# React + TypeScript + Vite
+# PostsAccordion Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Основные возможности
 
-Currently, two official plugins are available:
+### Загрузка данных
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Асинхронная загрузка постов с внешнего API
+- Индикатор загрузки с анимированным спиннером
+- Обработка ошибок при загрузке данных
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Группировка контента
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Посты группируются по пользователям (userId)
+- Отображение только первых 5 пользователей
+- Показ только первого поста каждого пользователя в развернутом виде
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Интерактивные функции
+
+- **❤️ Лайки**: Возможность лайкать/убирать лайк с постов
+- **📌 Закладки**: Добавление постов в закладки
+- **🔒 Блокировка**: Блокировка постов от редактирования
+- **✏️ Редактирование**: Редактирование заголовка и содержимого постов
+
+
+### Аккордеон интерфейс
+
+- Сворачивание/разворачивание секций пользователей
+- Плавные анимации при переключении состояний
+- Визуальные индикаторы открытого/закрытого состояния
+
+
+## Структура данных
+
+```typescript
+type Post = {
+  userId: number
+  id: number
+  title: string
+  body: string
+}
+
+type GroupedPosts = {
+  [userId: number]: Post[]
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Состояния компонента
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `posts` - массив всех загруженных постов
+- `loading` - состояние загрузки данных
+- `likedPosts` - Set ID лайкнутых постов
+- `bookmarkedPosts` - Set ID постов в закладках
+- `lockedPosts` - Set ID заблокированных постов
+- `editingPost` - текущий редактируемый пост
+- `showModal` - состояние отображения модального окна
+- `openAccordions` - Set открытых секций аккордеона
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+## Пользовательский интерфейс
+
+### Карточка пользователя
+
+- Аватар с эмодзи 👤
+- Имя пользователя (User userId)
+- Бейдж с количеством постов
+- Стрелка для индикации состояния аккордеона
+
+
+### Карточка поста
+
+- Заголовок с эмодзи 📄
+- Содержимое поста
+- Бейджи статуса (лайк, закладка, блокировка)
+- Кнопки действий
+
+
+### Модальное окно редактирования
+
+- Поля для редактирования заголовка и содержимого
+- Кнопки сохранения и отмены
+- Стилизация в стиле Bootstrap
+
+
+## Технические особенности
+
+- Использует **axios** для HTTP запросов
+- Применяет **Bootstrap** для стилизации
+- Реализует **TypeScript** для типизации
+- Использует **React Hooks** для управления состоянием
+- Поддерживает **responsive design**
+
+
+## Ограничения
+
+- Отображает только первые 5 пользователей
+- Показывает только первый пост каждого пользователя
+- Заблокированные посты нельзя редактировать
+- Изменения сохраняются только в локальном состоянии
 ```
