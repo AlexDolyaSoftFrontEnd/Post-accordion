@@ -1,0 +1,185 @@
+/* ---------------------------------------------------
+   SAMSUNG ONE UI 6 VARIABLES
+--------------------------------------------------- */
+:root {
+  --oneui-bg: #f6f7f9;
+  --oneui-card: #fff;
+  --oneui-border: rgba(0,0,0,0.06);
+  --oneui-shadow: 0 6px 22px rgba(0,0,0,0.08);
+  --oneui-radius: 22px;
+
+  --oneui-accent: #0274ff;
+  --oneui-accent-light: rgba(2,116,255,0.12);
+
+  --oneui-text: #1d1d1f;
+  --oneui-text-light: #6b6f76;
+}
+
+/* ---------------------------------------------------
+   GLOBAL SAMSUNG LOOK
+--------------------------------------------------- */
+body {
+  background: var(--oneui-bg);
+  color: var(--oneui-text);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------
+   CARD
+--------------------------------------------------- */
+.oneui-card {
+  background: var(--oneui-card);
+  border-radius: var(--oneui-radius);
+  padding: 22px;
+  border: 1px solid var(--oneui-border);
+  box-shadow: var(--oneui-shadow);
+}
+
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+.oneui-btn {
+  border-radius: 18px;
+  padding: 10px 18px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.oneui-btn-accent {
+  background: var(--oneui-accent);
+  color: white;
+  border: none;
+}
+
+.oneui-btn-outline {
+  border: 1px solid var(--oneui-border);
+  background: white;
+  color: var(--oneui-text);
+}
+
+.oneui-btn:active {
+  transform: scale(0.96);
+}
+
+/* ---------------------------------------------------
+   ICON BUTTONS
+--------------------------------------------------- */
+.oneui-icon-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--oneui-border);
+  background: white;
+  font-size: 18px;
+  transition: 0.25s ease;
+}
+
+.oneui-icon-btn:hover {
+  background: var(--oneui-accent-light);
+}
+
+.oneui-icon-btn.active {
+  background: var(--oneui-accent);
+  color: white;
+}
+
+/* ---------------------------------------------------
+   ACCORDION BUTTON
+--------------------------------------------------- */
+.oneui-accordion-btn {
+  background: white;
+  padding: 18px 22px;
+  width: 100%;
+  border-radius: var(--oneui-radius);
+  border: 1px solid var(--oneui-border);
+  box-shadow: var(--oneui-shadow);
+  text-align: left;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.oneui-accordion-btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------------------------------------------------
+   ARROW (Samsung style)
+--------------------------------------------------- */
+.oneui-chevron {
+  display: inline-block;
+  font-size: 18px;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+}
+
+.oneui-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* ---------------------------------------------------
+   ACCORDION WRAPPER (ANIMATION)
+--------------------------------------------------- */
+.oneui-accordion-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.oneui-accordion-wrapper.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------
+   ACCORDION CONTENT
+--------------------------------------------------- */
+.oneui-accordion-content {
+  background: white;
+  border-radius: var(--oneui-radius);
+  border: 1px solid var(--oneui-border);
+  padding: 22px;
+  margin-top: 12px;
+  box-shadow: var(--oneui-shadow);
+}
+
+/* ---------------------------------------------------
+   MODAL
+--------------------------------------------------- */
+.oneui-modal-blur {
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.35) !important;
+}
+
+.oneui-modal-content {
+  border-radius: 28px !important;
+  padding: 22px !important;
+  box-shadow: var(--oneui-shadow);
+}
+
+/* ---------------------------------------------------
+   TOAST
+--------------------------------------------------- */
+.oneui-toast {
+  background: var(--oneui-text);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 18px;
+  font-size: 15px;
+  box-shadow: var(--oneui-shadow);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ---------------------------------------------------
+   ANIMATIONS
+--------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
